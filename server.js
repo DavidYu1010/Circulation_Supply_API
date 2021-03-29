@@ -5,6 +5,6 @@ const Web3 = require('web3');
 
 app.use(express.json())
 app.use("/", routes);
-app.listen(8080, (err) => {
+app.listen(8080||process.env.PORT, (err) => {
     console.log(`API listening!`);
 })
