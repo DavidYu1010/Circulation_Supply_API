@@ -9,6 +9,7 @@ let total_wallet_supply = 0;
 const express = require("express");
 const route = express.Router();
 module.exports = route.get("/getCirculatingSupply", async (req, res) => {
+    total_wallet_supply = 0;
     const totalSupply = await tokenContract.methods.totalSupply().call();
 
     var wallet_address_list = [
@@ -43,6 +44,7 @@ module.exports = route.get("/getCirculatingSupply", async (req, res) => {
             walletSupply = 0;
         }
         total_wallet_supply += Number(walletSupply);
+        console.log(total_wallet_supply)
     }
     const circulatingSupply = Number(totalSupply) - total_wallet_supply
     const result = circulatingSupply/Math.pow(10, 18)
