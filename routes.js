@@ -46,5 +46,5 @@ module.exports = route.get("/getCirculatingSupply", async (req, res) => {
     }
     const circulatingSupply = Number(totalSupply) - total_wallet_supply
     const result = circulatingSupply/Math.pow(10, 18)
-    res.json({"Circulating Supply": result, "total token": totalSupply})
+    res.send(result.toString())
 })
